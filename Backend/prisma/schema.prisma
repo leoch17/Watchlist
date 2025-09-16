@@ -1,0 +1,35 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Modelo para las listas de observación
+model Watchlist {
+  id      String   @id @default(uuid())
+  name    String
+  terms   String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("watchlists") // Nombre de la tabla en la DB
+}
+
+// Modelo para los eventos
+model Event {
+  id              String   @id @default(uuid())
+  timestamp       DateTime @default(now())
+  content         String
+  summary         String
+  severity        String
+  suggestedAction String
+  relatedWatchlistId String?
+  matchedTerm     String?
+
+  @@map("events") // Nombre de la tabla en la DB
+}

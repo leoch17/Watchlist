@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es2016", 
+    "module": "commonjs", // Esto es crucial para evitar el error de "Unknown file extension"
+    "lib": ["es2016", "dom"], 
+    "outDir": "./dist", 
+    "rootDir": "./src", 
+    "strict": true, 
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*.ts", "src/index.ts", "src/routes", "src/middlewares", "src/types"],
+  "exclude": ["node_modules", "dist"]
+}
